@@ -5,6 +5,9 @@
 #include <time.h>
 #include <stdlib.h>
 
+/*
+ * checkForDigits Function: check the password passed to make sure there is atleast 1 digit
+ */
 bool checkForDigits(const char* password) {
     for (int i = 0; i < strlen(password); i++) {
         // as long as we find 1 digit, return true
@@ -15,6 +18,9 @@ bool checkForDigits(const char* password) {
     return false;
 }
 
+/*
+ * checkForUpperCase Function: check the password passed to make sure there is atleast 1 uppercase letter
+ */
 bool checkForUpperCase(const char* password) {
     for (int i = 0; i < strlen(password); i++) {
         // as long as we find 1 uppercase letter, return true
@@ -25,6 +31,9 @@ bool checkForUpperCase(const char* password) {
     return false;
 }
 
+/*
+ * checkForLowerCase Function: check the password passed to make sure there is atleast 1 lowercase letter
+ */
 bool checkForLowerCase (const char* password) {
     for (int i = 0; i < strlen(password); i++) {
         // as long as we find 1 lowercase letter, return true
@@ -35,6 +44,9 @@ bool checkForLowerCase (const char* password) {
     return false;
 }
 
+/*
+ * fourConsecutiveLetters Function: check the password passed to make sure there are 4 consecutive letters
+ */
 bool fourConsecutiveLetters (const char* password) {
     int consecutiveLetterCount = 0;
     // iterate through the password
@@ -54,6 +66,9 @@ bool fourConsecutiveLetters (const char* password) {
     return false;
 }
 
+/*
+ * onlyCharsAndNums Function: check the password passed to make sure there are no other characters besides letters and numbers
+ */
 bool onlyCharsAndNums (const char* password) {
     for (int i = 0; i < strlen(password); i++) {
         // as soon as we hit something that is not a digit, lowercase, or uppercase letter, return false
@@ -64,6 +79,9 @@ bool onlyCharsAndNums (const char* password) {
     return true;
 }
 
+/*
+ * checkUserInPass: check the password passed to make sure the username is not in the password
+ */
 bool checkUserInPass (const char* username, const char* password) {
     int sameCharCount = 0;
     // iterate through the length of the password
