@@ -1,0 +1,43 @@
+    // int sameCharCount = 0;
+    // // iterate through the length of the password
+    // for (int i = 0; i < strlen(password); i++) {
+    //     // if the current characters are the same
+    //     if (*(password + i) == *(username + i)) {
+    //         // increment sameCharCount
+    //         sameCharCount++;
+    //         // if we are at end of username, return true
+    //         if (*(username + i) == '\0') {
+    //             return true;
+    //         }
+    //     }
+    //     // if the current letter in password is uppercase, BUT letter in username is lowercase
+    //     else if (*(password + i) >= 'A' && *(password + i) <= 'Z') {
+    //         // make it lowercase to compare to username, if they are equal
+    //         if ( (*(password + i) + 32) == *(username + i) ) {
+    //             // increment sameCharCount
+    //             sameCharCount++;
+    //             // if we hit end of username
+    //             if (*(username + i) == '\0') {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     // if the current letter in password is lowercase, BUT letter in username is uppercase
+    //     else if (*(password + i) >= 'a' && *(password + i) <= 'z') {
+    //         // make it uppercase to compare to username, if they are equal
+    //         if ( (*(password + i) - 32) == *(username + i) ) {
+    //             // increment sameCharCount
+    //             sameCharCount++;
+    //             // if we hit end of username
+    //             if (*(username + i) == '\0') {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     // if password letter is not uppercase, and not the same character
+    //     else {
+    //         // reset count to 0
+    //         sameCharCount = 0;
+    //     }
+    // }
+    // return false;

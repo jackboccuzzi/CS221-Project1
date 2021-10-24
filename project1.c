@@ -82,36 +82,36 @@ bool onlyCharsAndNums (const char* password) {
 /*
  * checkUserInPass: check the password passed to make sure the username is not in the password
  */
-bool checkUserInPass (const char* username, const char* password) {
+bool checkUserInPass (const char* username, const char* password) { 
     int sameCharCount = 0;
-    // iterate through the length of the password
-    for (int i = 0; i < strlen(password); i++) {
-        // if the current characters are the same
-        if (*(password + i) == *(username + i)) {
-            // increment sameCharCount
+    // iterate through the password
+    while(*password > 0) {
+        // if the current character is the same as the username, increment a count and move username pointer
+        if(*password == *username){
+            username++;
             sameCharCount++;
-            // if we are at end of username, return true
-            if (*(username + i) == '\0') {
+            // if we hit the end of the username, return true
+            if(*username == 0) {
                 return true;
             }
-        }
-        // if the current letter in password is uppercase
-        else if (*(password + i) >= 'A' && *(password + i) <= 'Z') {
-            // make it lowercase to compare to username, if they are equal
-            if ( (*(password + i) + 32) == *(username + i) ) {
-                // increment sameCharCount
+            // if the current character in password is uppercase, change to lowercase then compare
+        } 
+        else if(*password >= 'A' && *password <= 'Z'){
+            // if characters are the same, increment count and move username pointer
+            if((*password) + 32 == *username){
+                username++;
                 sameCharCount++;
-                // if we hit end of username
-                if (*(username + i) == '\0') {
+                // if we hit the end of the username, return true
+                if(*username == 0){
                     return true;
                 }
             }
-        }
-        // if password letter is not uppercase, and not the same character
+        } 
         else {
-            // reset count to 0
+            username = username - sameCharCount;
             sameCharCount = 0;
         }
+        password++;
     }
     return false;
 }
