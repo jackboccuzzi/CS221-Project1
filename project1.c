@@ -128,9 +128,9 @@ bool isStrongPassword (const char* username, const char* password ) {
         return false;
     }
     // if password has at least 1 digit, 1 uppercase, 1 lowercase, 4 consecutive letters, only nums and chars, and user NOT IN pass
-    if (checkForDigits(password) == 0 && checkForUpperCase(password) == 0 && 
-        checkForLowerCase(password) == 0 && fourConsecutiveLetters(password) == 0 && onlyCharsAndNums(password) == 0 
-        && checkUserInPass(username, password) == 1) {
+    if (checkForDigits(password) == 1 && checkForUpperCase(password) == 1 && 
+        checkForLowerCase(password) == 1 && fourConsecutiveLetters(password) == 1 && onlyCharsAndNums(password) == 1 
+        && checkUserInPass(username, password) == 0) {
         return true;
     }
     return false;
@@ -144,9 +144,9 @@ bool isStrongDefaultPassword(const char* username, const char* password) {
         return false;
     }
     // if password has at least 1 digit, 1 uppercase, 1 lowercase, only nums and chars, and user NOT IN pass
-    if (checkForDigits(password) == 0 && checkForUpperCase(password) == 0 && 
-        checkForLowerCase(password) == 0 && onlyCharsAndNums(password) == 0 &&
-        checkUserInPass(username, password) == 1) {
+    if (checkForDigits(password) == 1 && checkForUpperCase(password) == 1 && 
+        checkForLowerCase(password) == 1 && onlyCharsAndNums(password) == 1 &&
+        checkUserInPass(username, password) == 0) {
         return true;
     }
 	return false;
@@ -176,7 +176,7 @@ void generateDefaultPassword(char * default_password, const char * username) {
         generatedPassword[randPassLength] = '\0';
 
         // if the generated password is strong, set the default password to the generated password
-        if (isStrongDefaultPassword(username, generatedPassword) == 0) {
+        if (isStrongDefaultPassword(username, generatedPassword) == 1) {
             // strcopy (destination, source),
             strcpy(default_password, generatedPassword);
             findValidPassword = false;
@@ -198,7 +198,7 @@ int main (void) {
     scanf("%s", password);
 
     // check to see if the password is strong
-    if (isStrongPassword(username, password) == 0) {
+    if (isStrongPassword(username, password) == 1) {
         printf("Your password is strong!\n");
     }
     else {
