@@ -122,7 +122,7 @@ bool checkUserInPass (const char* username, const char* password) {
  * as defined in the CS221 course website for Project 1.
  *
  */
-bool isStrongPassword ( const char * username , const char * password ) {
+bool isStrongPassword (const char* username, const char* password ) {
     // if password is less than 8 characters, false
     if (strlen(password) < 8) {
         return false;
