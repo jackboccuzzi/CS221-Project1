@@ -107,7 +107,7 @@ bool checkUserInPass (const char* username, const char* password) {
                 }
             }
         }
-        // if password letter is notuppercase, and not the same character
+        // if password letter is not uppercase, and not the same character
         else {
             // reset count to 0
             sameCharCount = 0;
