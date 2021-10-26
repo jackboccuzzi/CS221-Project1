@@ -8,12 +8,21 @@
 /*
  * checkForDigits Function: check the password passed to make sure there is atleast 1 digit
  */
+// bool checkForDigits(const char* password) {
+//     for (int i = 0; i < strlen(password); i++) {
+//         // as long as we find 1 digit, return true
+//         if (*(password + i) >= 48 && *(password + i) <= 57) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 bool checkForDigits(const char* password) {
-    for (int i = 0; i < strlen(password); i++) {
-        // as long as we find 1 digit, return true
-        if (*(password + i) >= 48 && *(password + i) <= 57) {
+    while (*password != '\0') {
+        if (*password >= 48 && *password <= 57) {
             return true;
         }
+        password++;
     }
     return false;
 }
@@ -21,25 +30,42 @@ bool checkForDigits(const char* password) {
 /*
  * checkForUpperCase Function: check the password passed to make sure there is atleast 1 uppercase letter
  */
+// bool checkForUpperCase(const char* password) {
+//     for (int i = 0; i < strlen(password); i++) {
+//         // as long as we find 1 uppercase letter, return true
+//         if (*(password + i) >= 'A' && *(password + i) <= 'Z') {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 bool checkForUpperCase(const char* password) {
-    for (int i = 0; i < strlen(password); i++) {
-        // as long as we find 1 uppercase letter, return true
-        if (*(password + i) >= 'A' && *(password + i) <= 'Z') {
+    while (*password != '\0') {
+        if (*password >= 'A' && *password <= 'Z') {
             return true;
         }
+        password++;
     }
     return false;
 }
-
 /*
  * checkForLowerCase Function: check the password passed to make sure there is atleast 1 lowercase letter
  */
+// bool checkForLowerCase (const char* password) {
+//     for (int i = 0; i < strlen(password); i++) {
+//         // as long as we find 1 lowercase letter, return true
+//         if (*(password + i) >= 'a' && *(password + i) <= 'z') {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 bool checkForLowerCase (const char* password) {
-    for (int i = 0; i < strlen(password); i++) {
-        // as long as we find 1 lowercase letter, return true
-        if (*(password + i) >= 'a' && *(password + i) <= 'z') {
+    while (*password != '\0') {
+        if (*password >= 'a' && *password <= 'z') {
             return true;
         }
+        password++;
     }
     return false;
 }
@@ -47,21 +73,37 @@ bool checkForLowerCase (const char* password) {
 /*
  * fourConsecutiveLetters Function: check the password passed to make sure there are 4 consecutive letters
  */
+// bool fourConsecutiveLetters (const char* password) {
+//     int consecutiveLetterCount = 0;
+//     // iterate through the password
+//     for (int i = 0; i < strlen(password); i++) {
+//         // if we find a lowercase or uppercase letter, increment a count. If we hit 4 consec letters, return true
+//         if ( (*(password + i) >= 'a' && *(password + i) <= 'z') || (*(password + i) >= 'A' && *(password +i) <= 'Z') ) {
+//             consecutiveLetterCount++;
+//             if (consecutiveLetterCount == 4) {
+//                 return true;
+//             }
+//         }
+//         // if the current character is not a lowercase or uppercase letter, reset the count to 0
+//         else {
+//             consecutiveLetterCount = 0;
+//         }
+//     }
+//     return false;
+// }
 bool fourConsecutiveLetters (const char* password) {
     int consecutiveLetterCount = 0;
-    // iterate through the password
-    for (int i = 0; i < strlen(password); i++) {
-        // if we find a lowercase or uppercase letter, increment a count. If we hit 4 consec letters, return true
-        if ( (*(password + i) >= 'a' && *(password + i) <= 'z') || (*(password + i) >= 'A' && *(password +i) <= 'Z') ) {
+    while (*password != '\0') {
+        if ( (*password >= 'a' && *password <= 'z') || (*password >= 'A' && *password <= 'Z') ) {
             consecutiveLetterCount++;
             if (consecutiveLetterCount == 4) {
                 return true;
             }
         }
-        // if the current character is not a lowercase or uppercase letter, reset the count to 0
         else {
             consecutiveLetterCount = 0;
         }
+        password++;
     }
     return false;
 }
@@ -69,12 +111,21 @@ bool fourConsecutiveLetters (const char* password) {
 /*
  * onlyCharsAndNums Function: check the password passed to make sure there are no other characters besides letters and numbers
  */
+// bool onlyCharsAndNums (const char* password) {
+//     for (int i = 0; i < strlen(password); i++) {
+//         // as soon as we hit something that is not a digit, lowercase, or uppercase letter, return false
+//         if ( (*(password + i) < '0' && *(password + i) > '9') && (*(password + i) < 'a' && *(password + i) > 'z') && (*(password + i) < 'A' && *(password + i) > 'Z') ) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 bool onlyCharsAndNums (const char* password) {
-    for (int i = 0; i < strlen(password); i++) {
-        // as soon as we hit something that is not a digit, lowercase, or uppercase letter, return false
-        if ( (*(password + i) < '0' && *(password + i) > '9') && (*(password + i) < 'a' && *(password + i) > 'z') && (*(password + i) < 'A' && *(password + i) > 'Z') ) {
+    while (*password != '\0') {
+        if ( (*password < '0' && *password > '9') && (*password < 'a' && *password > 'z') && (*password < 'A' && *password > 'Z') ) {
             return false;
         }
+        password++;
     }
     return true;
 }
@@ -189,7 +240,7 @@ int main (void) {
     // declare username, password, and default_password
     char username[51];
     char password[51];
-    char default_password[51];
+    char default_password[16];
 
     // ask user to enter a username and password
     printf("Enter your username: ");
